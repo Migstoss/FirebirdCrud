@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head lang="en">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,17 +29,18 @@
         while ($row = ibase_fetch_object($listar)){
           printf(
             '<tr><td>%s</td><td>%s</td><td>%s</td><td>                    
-                    <a><button><label for="update">
-                    <i class="material-icons">create</i></label></button></a>
-                                        
+                    <button><label for="update">Editar</label></button>                                        
                     </td></tr>',
             htmlspecialchars($row->ID),
             htmlspecialchars($row->NOMBRE),
             htmlspecialchars($row->APELLIDO)
           );
+      ?>
+        <form action="update.php?id=<?php echo $row->ID ?>" method="post" enctype="multipart/form-data" id="MyUploadForm">
+          <input type="submit" id="update" name="update" title="Editar" data-toggle="tooltip" hidden>
+        </form><?php
         }
       ?>
-      <input id="update" name="update" title="Editar" data-toggle="tooltip"><a href="update.php" hidden><i class="material-icons">&#xE254;</i></a>
       </tbody>
     </table>
   </div>
